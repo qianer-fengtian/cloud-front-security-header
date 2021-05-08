@@ -3,15 +3,18 @@
 
 ## 作成・更新
 
+プロジェクトルート直下で以下を実行する。
+
 ```
-> aws s3 mb s3://<s3-bucket> --region us-east-1
-> sam deploy --stack-name cloud-front-security-header --region us-east-1 --s3-bucket <s3-bucket> --capabilities CAPABILITY_NAMED_IAM
+> ./scripts/deploy.ps1
 ```
 
 ## 削除
 
+以下を実行する。
+
 ```
-aws cloudformation delete-stack --stack-name cloud-front-security-header --region us-east-1
+> ./scripts/delete.ps1
 ```
 
 ## 参照
