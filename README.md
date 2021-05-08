@@ -11,7 +11,7 @@
 ## 削除
 
 ```
-aws cloudformation delete-stack --stack-name cloud-front-security-header
+aws cloudformation delete-stack --stack-name cloud-front-security-header --region us-east-1
 ```
 
 ## 参照
