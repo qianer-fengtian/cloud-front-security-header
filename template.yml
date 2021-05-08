@@ -30,5 +30,6 @@ Resources:
       Runtime: nodejs14.x
       MemorySize: 128
       Timeout: 10
+      AutoPublishAlias: prod
       Description: Adds a security header to the content delivered by the cloud front.
       Role: !GetAtt "CloudFrontSecurityHeaderRole.Arn"
