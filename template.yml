@@ -1,0 +1,34 @@
+AWSTemplateFormatVersion: 2010-09-09
+
+Description: >-
+  Adds a security header to the content delivered by the cloud front.
+
+Transform:
+- AWS::Serverless-2016-10-31
+
+Resources:
+  CloudFrontSecurityHeaderRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: cloud-front-security-header-role
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+        - Effect: Allow
+          Principal:
+            Service:
+              - lambda.amazonaws.com
+              - edgelambda.amazonaws.com
+          Action:
+            - "sts:AssumeRole"
+
+  CloudFrontSecurityHeader:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: cloud-front-security-header
+      Handler: src/handlers/index.handler
+      Runtime: nodejs14.x
+      MemorySize: 128
+      Timeout: 10
+      Description: Adds a security header to the content delivered by the cloud front.
+      Role: !GetAtt "CloudFrontSecurityHeaderRole.Arn"
